@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Ресурсы</string>
+    <string name="text">Привет, мир!</string>
+    <string name="pink">Розовый</string>
+    <string name="lilac">Сереневый</string>
+    <string name="beige">Бежевый</string>
+    <string name="frog">Жабка</string>
+    <string name="color">Цвет</string>
+    <string name="font">Font</string>
+    <string name="al">Alphabet Lore</string>
+    <string name="ab">Andy Bold</string>
+    <string name="e">Egyptian</string>
+    <string name="ts">Twinkle Star</string>
+    <string name="language">Язык</string>
+    <string name="ru">Русский</string>
+    <string name="en">Английский</string>
+    <string name="orientation">Ориентация</string>
+    <string name="horizontal">Горизантальная</string>
+    <string name="vertical">Вертикальная</string>
+    <string name="exit">Выход</string>
+</resources>

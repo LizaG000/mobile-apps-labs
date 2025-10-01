@@ -183,7 +183,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monospase"
+            android:text="Sans Serif"
             android:textColor="#20548A"
             android:layout_marginStart="8dp"/>
     </LinearLayout>

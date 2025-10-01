@@ -1,0 +1,26 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/background</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="SpecialText" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+    <style name="AlphabetLore" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/alphabet_lore</item>
+    </style>
+    <style name="AndyBold" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/andy_bold</item>
+    </style>
+    <style name="Egyptian" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/egyptian</item>
+    </style>
+    <style name="TwinkleStar" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/twinkle_star</item>
+    </style>
+</resources>

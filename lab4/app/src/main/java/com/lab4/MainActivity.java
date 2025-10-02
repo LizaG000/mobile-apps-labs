@@ -1,7 +1,7 @@
 package com.lab4;
 
 import android.os.Bundle;
-
+import android.widget.CompoundButton;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -25,7 +25,7 @@ import java.util.List;
 import android.util.TypedValue;
 
 public class MainActivity extends AppCompatActivity implements
-        View.OnClickListener {
+        View.OnClickListener,  CompoundButton.OnCheckedChangeListener {
 
     // Компоненты
     private ImageButton imageButton;
@@ -72,69 +72,55 @@ public class MainActivity extends AppCompatActivity implements
 
         // Навешиваем обработчики
         imageButton.setOnClickListener(this);
-        textView.setOnClickListener(this);
-        radioButton1.setOnClickListener(this);
-        radioButton2.setOnClickListener(this);
-        checkBox1.setOnClickListener(this);
-        checkBox2.setOnClickListener(this);
-        checkBox3.setOnClickListener(this);
-        imageView.setOnClickListener(this);
-        toggleButton.setOnClickListener(this);
+        radioButton1.setOnCheckedChangeListener(this);
+        radioButton2.setOnCheckedChangeListener(this);
+        checkBox1.setOnCheckedChangeListener(this);
+        checkBox2.setOnCheckedChangeListener(this);
+        checkBox3.setOnCheckedChangeListener(this);
+        toggleButton.setOnCheckedChangeListener(this);
 
     }
-
     @Override
     public void onClick(View v) {
         int but = v.getId();
-        if (but == R.id.ch1 || but == R.id.ch2 || but == R.id.ch3) {
-            applyTextStyle();
-        }
-        else if (but == R.id.r1) {
-            if (radioButton1.isChecked()){
-                for (TextView tv : allViews) {
-                    tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, 14);
-                    String text = tv.getText().toString();
-                    tv.setAllCaps(true);
-                    tv.setText(text.toLowerCase());
-                }
-
-                ViewGroup.LayoutParams imageButtonLayoutParams = imageButton.getLayoutParams();
-                imageButtonLayoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
-                imageButtonLayoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
-                ViewGroup.LayoutParams imageViewLayoutParams = imageView.getLayoutParams();
-                imageViewLayoutParams.height =  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 72, getResources().getDisplayMetrics());;
-
-            }
-        }
-        else if (but == R.id.r2) {
-            if (radioButton2.isChecked()){
-                for (TextView tv : allViews) {
-                    tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, 8);
-                    tv.setAllCaps(false);
-                    String text = tv.getText().toString();
-                    tv.setText(text.toLowerCase());
-                }
-
-                ViewGroup.LayoutParams imageButtonLayoutParams = imageButton.getLayoutParams();
-                imageButtonLayoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics());
-                imageButtonLayoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics());
-                ViewGroup.LayoutParams imageViewLayoutParams = imageView.getLayoutParams();
-                imageViewLayoutParams.height =  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());;
-            }
-        }
-        else if (but == R.id.image){
+        if (but == R.id.image){
             textView.setText("Глупенький,\nэто же картинка");
             textView.postDelayed(() -> {
                 textView.setText("ЛОПНИ ПУЗЫРЬ");
             }, 5000);
         }
-        else if (but == R.id.tb){
-            if (toggleButton.isChecked()){
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (buttonView == checkBox1 || buttonView == checkBox2 || buttonView == checkBox3) {
+            applyTextStyle();
+        }
+        else if (buttonView == radioButton1) {
+            if (isChecked){
+                applyRadiobutton1();
+            }
+            else{
+                radioButton2.setChecked(true);
+                applyRadiobutton2();
+            }
+        }
+        else if (buttonView == radioButton2) {
+            if (radioButton2.isChecked()){
+                applyRadiobutton2();
+            }
+            else{
+                radioButton1.setChecked(true);
+                applyRadiobutton1();
+
+            }
+        }
+        else if (buttonView == toggleButton){
+            if (isChecked){
                 imageView.setImageResource(R.drawable.on);
             }
             else{
                 imageView.setImageResource(R.drawable.off);
-                ViewGroup.LayoutParams imageViewLayoutParams = imageView.getLayoutParams();
             }
         }
     }
@@ -160,5 +146,34 @@ public class MainActivity extends AppCompatActivity implements
                 tv.setPaintFlags(tv.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
             }
         }
+    }
+
+    private void applyRadiobutton1() {
+        for (TextView tv : allViews) {
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, 14);
+            String text = tv.getText().toString();
+            tv.setAllCaps(true);
+            tv.setText(text.toLowerCase());
+        }
+
+        ViewGroup.LayoutParams imageButtonLayoutParams = imageButton.getLayoutParams();
+        imageButtonLayoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
+        imageButtonLayoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
+        ViewGroup.LayoutParams imageViewLayoutParams = imageView.getLayoutParams();
+        imageViewLayoutParams.height =  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 72, getResources().getDisplayMetrics());
+    }
+    private void applyRadiobutton2() {
+        for (TextView tv : allViews) {
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, 8);
+            tv.setAllCaps(false);
+            String text = tv.getText().toString();
+            tv.setText(text.toLowerCase());
+        }
+
+        ViewGroup.LayoutParams imageButtonLayoutParams = imageButton.getLayoutParams();
+        imageButtonLayoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics());
+        imageButtonLayoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, getResources().getDisplayMetrics());
+        ViewGroup.LayoutParams imageViewLayoutParams = imageView.getLayoutParams();
+        imageViewLayoutParams.height =  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
     }
 }

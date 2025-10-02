@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Resources</string>
+    <string name="text">Hello world!</string>
+    <string name="pink">Pink</string>
+    <string name="lilac">Lilac</string>
+    <string name="beige">Beige</string>
+    <string name="frog">Frog</string>
+    <string name="color">Color</string>
+    <string name="font">Font</string>
+    <string name="al">Alphabet Lore</string>
+    <string name="ab">Andy Bold</string>
+    <string name="e">Egyptian</string>
+    <string name="ts">Twinkle_star</string>
+    <string name="language">Language</string>
+    <string name="ru">Russian</string>
+    <string name="en">England</string>
+    <string name="orientation">Orientation</string>
+    <string name="horizontal">Horizontal</string>
+    <string name="vertical">Vertical</string>
+    <string name="exit">Exit</string>
+</resources>
